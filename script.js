@@ -53,7 +53,7 @@ function openScenario(type) {
   const notice = document.getElementById("videoNotice");
 
   if (videos[type]) {
-    source.src = videos[type];
+    video.src = videos[type];
     video.load();
     notice.textContent = "Video tersedia. Gunakan layar penuh untuk pengalaman yang lebih imersif.";
   } else {
