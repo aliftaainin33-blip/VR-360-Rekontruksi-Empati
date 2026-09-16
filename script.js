@@ -1,8 +1,8 @@
 const videos = {
-  verbal: "video-relasional-cyber.mp4",
-  physical:  "video-relasional-cyber.mp4",
-  sosial: "video-relasional-cyber.mp4",
-  cyber: "video-relasional-cyber.mp4",
+  verbal: "video-relasional-cyber[1].mp4",
+  physical:  "video-relasional-cyber[1].mp4",
+  sosial: "video-relasional-cyber[1].mp4",
+  cyber: "video-relasional-cyber[1].mp4",
 };
 
 const scenarios = {
