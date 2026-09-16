@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rekonstruksi Empati - Modul Konseling Virtual Reality untuk pencegahan bullying">
+  <title>Rekonstruksi Empati | Modul Konseling VR</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a class="logo" href="#beranda"><span>RE</span> Rekonstruksi Empati</a>
+  <nav>
+    <a href="#beranda">Beranda</a>
+    <a href="#skenario">Skenario</a>
+    <a href="#tentang">Tentang</a>
+  </nav>
+</header>
+
+<main>
+  <!-- 1. OPENING -->
+  <section id="beranda" class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">MODUL KONSELING VIRTUAL REALITY</p>
+      <h1>Rekonstruksi<br><em>Empati</em></h1>
+      <p class="tagline">Rasakan. Pahami. Ubah.</p>
+      <p class="lead">
+        Bagaimana jika hari ini kamu berada di posisi mereka?
+        Masuk ke pengalaman POV dan lihat bullying dari sudut pandang korban.
+      </p>
+      <a href="#skenario" class="btn btn-light">Mulai Pengalaman <span>→</span></a>
+      <p class="hero-note">Pengalaman ini dibuat untuk pembelajaran dan konseling di lingkungan sekolah.</p>
+    </div>
+    <div class="hero-orbit" aria-hidden="true">
+      <div class="orbit-card">
+        <span>POV</span>
+        <strong>Lihat dari<br>posisi korban</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PILIH SKENARIO -->
+  <section id="skenario" class="section">
+    <div class="section-title">
+      <div class="number">01</div>
+      <div>
+        <p class="eyebrow dark">PENGALAMAN</p>
+        <h2>Pilih Skenario</h2>
+        <p>Kamu akan melihat situasi dari sudut pandang korban.</p>
+      </div>
+    </div>
+
+    <div class="scenario-grid">
+      <button class="scenario verbal" onclick="openScenario('verbal')">
+        <span class="scenario-icon">💬</span>
+        <span class="scenario-name">Bullying Verbal</span>
+        <span class="scenario-desc">Ejekan, hinaan, dan kata-kata yang menyakitkan.</span>
+        <span class="arrow">↗</span>
+      </button>
+
+      <button class="scenario fisik" onclick="openScenario('fisik')">
+        <span class="scenario-icon">✋</span>
+        <span class="scenario-name">Physical Bullying</span>
+        <span class="scenario-desc">Intimidasi, menghalangi, atau tindakan fisik yang tidak pantas.</span>
+        <span class="arrow">↗</span>
+      </button>
+
+      <button class="scenario sosial" onclick="openScenario('sosial')">
+        <span class="scenario-icon">👥</span>
+        <span class="scenario-name">Relational Bullying</span>
+        <span class="scenario-desc">Dikucilkan, diabaikan, atau sengaja tidak diajak.</span>
+        <span class="arrow">↗</span>
+      </button>
+
+      <button class="scenario cyber" onclick="openScenario('cyber')">
+        <span class="scenario-icon">📱</span>
+        <span class="scenario-name">Cyberbullying</span>
+        <span class="scenario-desc">Komentar negatif dan perlakuan menyakitkan di dunia digital.</span>
+        <span class="arrow">↗</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- 3. SIMULASI POV -->
+  <section id="simulasi" class="section section-dark hidden">
+    <div class="section-title light">
+      <div class="number">02</div>
+      <div>
+        <p class="eyebrow">SIMULASI POV</p>
+        <h2 id="scenarioTitle">Bullying Verbal</h2>
+        <p id="scenarioIntro">Lihat situasi dari sudut pandang korban.</p>
+      </div>
+    </div>
+
+    <div class="simulation-wrap">
+      <div class="video-head">
+        <button class="text-button" onclick="showSection('skenario')">← Pilih skenario lain</button>
+        <span class="pov-badge">● POV KORBAN</span>
+      </div>
+
+      <div class="video-frame">
+        <video id="vrVideo" controls playsinline preload="metadata">
+          <source id="videoSource" src="assets/video-verbal.mp4" type="video/mp4">
+          Browser kamu tidak mendukung video.
+        </video>
+      </div>
+
+      <p id="videoNotice" class="notice">Video akan menyesuaikan dengan skenario yang kamu pilih.</p>
+
+      <div class="simulation-bottom">
+        <div>
+          <strong id="videoLabel">Bullying Verbal</strong>
+          <p>Gunakan layar penuh jika ingin pengalaman lebih imersif.</p>
+        </div>
+        <button class="btn btn-light" onclick="finishVideo()">Selesai Menonton →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. REFLEKSI -->
+  <section id="refleksi" class="section hidden">
+    <div class="reflection-card">
+      <div class="number">03</div>
+      <p class="eyebrow dark">BERHENTI SEJENAK</p>
+      <h2>Apa yang kamu rasakan?</h2>
+      <p id="reflectionIntro">Sekarang kamu sudah melihat kejadian dari sudut pandang korban.</p>
+
+      <label for="reflectionAnswer">Bagaimana perasaanmu ketika mengalami situasi seperti itu?</label>
+      <textarea id="reflectionAnswer" placeholder="Tulis jawabanmu dengan jujur..."></textarea>
+
+      <div class="actions">
+        <button class="btn btn-outline" onclick="showSection('simulasi')">← Kembali</button>
+        <button class="btn btn-dark" onclick="saveReflection()">Lanjut →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. TANYA & REFLEKSI -->
+  <section id="tanya" class="section hidden">
+    <div class="section-title">
+      <div class="number">04</div>
+      <div>
+        <p class="eyebrow dark">PENDAMPING REFLEKSI</p>
+        <h2>Tanya & Refleksi</h2>
+        <p>Ajukan pertanyaan sederhana tentang bullying dan empati.</p>
+      </div>
+    </div>
+
+    <div class="chat-card">
+      <div id="chatMessages" class="chat-messages">
+        <div class="message bot">
+          <b>Pendamping</b>
+          <p>Aku bisa membantu memahami situasi yang baru kamu lihat. Coba ceritakan atau tanyakan sesuatu.</p>
+        </div>
+      </div>
+
+      <div class="quick-questions">
+        <button onclick="askQuick('Apa yang termasuk bullying?')">Apa itu bullying?</button>
+        <button onclick="askQuick('Aku harus bagaimana jika melihat bullying?')">Aku harus bagaimana?</button>
+        <button onclick="askQuick('Bagaimana cara membantu korban?')">Cara membantu korban?</button>
+      </div>
+
+      <form class="chat-input" onsubmit="sendQuestion(event)">
+        <input id="questionInput" autocomplete="off" placeholder="Tulis pertanyaanmu...">
+        <button type="submit">Kirim</button>
+      </form>
+      <p class="small-note">Pendamping ini memberi informasi umum, bukan pengganti guru BK/konselor.</p>
+    </div>
+  </section>
+
+  <!-- 6. UJI EMPATI -->
+  <section id="uji" class="section hidden">
+    <div class="quiz-card">
+      <div class="number">05</div>
+      <p class="eyebrow dark">UJI EMPATI</p>
+      <h2>Kalau kamu melihatnya terjadi pada temanmu?</h2>
+      <p>Pilih tindakan yang menurutmu paling tepat.</p>
+
+      <div class="options">
+        <label><input type="radio" name="answer" value="0"> Ikut tertawa agar tidak dianggap aneh.</label>
+        <label><input type="radio" name="answer" value="0"> Diam dan membiarkannya.</label>
+        <label><input type="radio" name="answer" value="1"> Mendekati korban dan memberi dukungan.</label>
+        <label><input type="radio" name="answer" value="1"> Mencari bantuan guru/konselor.</label>
+      </div>
+
+      <button class="btn btn-dark" onclick="showResult()">Lihat Hasil →</button>
+    </div>
+  </section>
+
+  <!-- 7. HASIL -->
+  <section id="hasil" class="section hidden">
+    <div class="result-card">
+      <div class="result-icon">✓</div>
+      <p class="eyebrow dark">HASIL REFLEKSI</p>
+      <h2 id="resultTitle">Pilihan yang baik.</h2>
+      <p id="resultText"></p>
+      <div class="actions center-actions">
+        <button class="btn btn-outline" onclick="showSection('tanya')">← Tanya Lagi</button>
+        <button class="btn btn-dark" onclick="showSection('langkah')">Lanjut →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. LANGKAH NYATA -->
+  <section id="langkah" class="section">
+    <div class="section-title">
+      <div class="number">06</div>
+      <div>
+        <p class="eyebrow dark">SETELAH MELIHAT</p>
+        <h2>Langkah Nyata</h2>
+        <p>Hal sederhana yang bisa dilakukan ketika melihat bullying.</p>
+      </div>
+    </div>
+
+    <div class="steps">
+      <article><span>01</span><h3>Jangan ikut mengejek</h3><p>Jangan menambah tekanan pada korban.</p></article>
+      <article><span>02</span><h3>Dengarkan korban</h3><p>Beri ruang untuk bercerita tanpa menghakimi.</p></article>
+      <article><span>03</span><h3>Berikan dukungan</h3><p>Tunjukkan bahwa dia tidak sendirian.</p></article>
+      <article><span>04</span><h3>Cari bantuan</h3><p>Hubungi guru BK, wali kelas, atau orang dewasa tepercaya.</p></article>
+      <article><span>05</span><h3>Jangan sebarkan</h3><p>Jangan meneruskan foto, video, atau komentar yang menyakiti.</p></article>
+    </div>
+  </section>
+
+  <!-- 9. PENUTUP -->
+  <section id="tentang" class="closing">
+    <p class="eyebrow dark">PESAN UNTUK KITA</p>
+    <div class="bully">
+      <div><b>B</b><span>BE KIND</span></div>
+      <div><b>U</b><span>UNDERSTAND</span></div>
+      <div><b>L</b><span>LISTEN</span></div>
+      <div><b>L</b><span>LIFT OTHERS</span></div>
+      <div><b>Y</b><span>YOU CAN STOP IT</span></div>
+    </div>
+    <blockquote>“Kamu mungkin tidak tahu apa yang sedang seseorang hadapi. Jadi, pilihlah untuk menjadi alasan seseorang merasa aman.”</blockquote>
+    <a class="btn btn-dark" href="#beranda">Kembali ke Awal</a>
+  </section>
+</main>
+
+<footer>
+  <b>Rekonstruksi Empati</b>
+  <p>Modul Konseling Virtual Reality · Pencegahan Bullying di Lingkungan Sekolah</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
