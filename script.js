@@ -1,8 +1,8 @@
 const videos = {
-  verbal: "assets/video-verbal.mp4",
-  physical: "",   // Tambahkan video-physical.mp4 jika sudah dibuat
-  sosial: "assets/video-relasional-cyber.mp4",
-  cyber: "assets/video-relasional-cyber.mp4"
+  verbal: "video-relasional-cyber.mp4",
+  physical:  "video-relasional-cyber.mp4",
+  sosial: "video-relasional-cyber.mp4",
+  cyber: "video-relasional-cyber.mp4",
 };
 
 const scenarios = {
